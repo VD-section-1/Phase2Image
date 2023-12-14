@@ -50,10 +50,14 @@ class DataGen:
             image_list = self.list_images_in_path(IMAGE_DIR_PATH)
             metadata = pd.read_csv(pathlib.Path(METATADA_PATH))
             metadata_image_list = metadata['image_paths'].tolist()
+            paths = []
+
             for image in image_list:
                 if image not in metadata_image_list:
-                    metadata = metadata.append({'image_paths': image, 'phase_paths': type_pattern.sub('.npy', image)})
-            return pd.read_csv(pathlib.Path(METATADA_PATH))
+                    paths.append({'image_paths': image, 'phase_paths': type_pattern.sub('.npy', image)})
+            paths = pd.DataFrame(paths)
+            metadata = pd.concat([metadata, paths])
+            return metadata
 
     def gen_phases(self):
         # Generate phase images for all images if not already generated
