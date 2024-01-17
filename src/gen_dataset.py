@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 
 
-IMAGE_DIR_PATH = pathlib.Path(os.path.join(os.path.dirname(__file__), '../data/grayscale'))
+IMAGE_DIR_PATH = pathlib.Path(os.path.join(os.path.dirname(__file__), '../data/images'))
 PHASE_DIR_PATH = pathlib.Path(os.path.join(os.path.dirname(__file__), '../data/phases'))
 METATADA_PATH = pathlib.Path(os.path.join(os.path.dirname(__file__), '../data/metadata.csv'))
 
