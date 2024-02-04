@@ -1,8 +1,8 @@
-
 import cv2
 import re
 import os
 import pathlib
+from PIL import Image
 
 import pandas as pd
 import numpy as np
@@ -41,7 +41,7 @@ class DataGen:
             metadata = pd.DataFrame(columns=['image_paths', 'phase_paths'])
             metadata['image_paths'] = image_list
             metadata['phase_paths'] = metadata['image_paths'].apply(
-                lambda x: type_pattern.sub('.npy', x)
+                lambda x: type_pattern.sub('.png', x)
             )
             metadata.to_csv(pathlib.Path(METATADA_PATH))
             return metadata
@@ -54,7 +54,7 @@ class DataGen:
 
             for image in image_list:
                 if image not in metadata_image_list:
-                    paths.append({'image_paths': image, 'phase_paths': type_pattern.sub('.npy', image)})
+                    paths.append({'image_paths': image, 'phase_paths': type_pattern.sub('.png', image)})
             paths = pd.DataFrame(paths)
             metadata = pd.concat([metadata, paths])
             return metadata
@@ -64,7 +64,8 @@ class DataGen:
         for image_path, phase_path in zip(self.metadata['image_paths'], self.metadata['phase_paths']):
             if not pathlib.Path(os.path.join(PHASE_DIR_PATH, phase_path)).exists():
                 phase = self.image_to_phase(os.path.join(IMAGE_DIR_PATH, image_path))
-                np.save(os.path.join(PHASE_DIR_PATH, phase_path), phase)
+                img = Image.fromarray(phase, "L")
+                img.save(os.path.join(PHASE_DIR_PATH, phase_path))
 
 
 if __name__ == '__main__':
