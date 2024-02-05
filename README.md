@@ -1,7 +1,13 @@
 # Phase2Image
 Project for Visual Data classes related to reconstruction of images from the phase spectrums.
 
-# Standard
+## Preprocessing
+To create a ready-to-use dataset, follow these steps:
+1. Unzip the `dataset.zip` file into the `data/color` folder.
+2. Execute the `preprocess_pictures.py` script.
+This script will generate grayscale pictures and phase spectra.
+
+## Guide
 To ensure a smooth development experience, please adhere to the following rules while working on our Python project hosted on GitHub:
 1. Follow the PEP8 style guide for consistent and readable code.
 2. Adopt conventional commits to maintain a meaningful commit history.
