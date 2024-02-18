@@ -26,3 +26,11 @@ We trained our model for 50 epochs on a training dataset consisting of 4500 imag
 ![Example 2](images/example200.png "Results 2")
 
 ![Loss graph for LR 0.01](images/plot0.01.png "Loss graph for LR 0.01")
+
+@Posted Content{ Posted Content,
+        title={ Autoencoder Model for Translating Omics Signatures },
+        authors={ Nikolaos Meimetis and Krista M. Pullen and Daniel Y. Zhu and Avlant Nilsson and Trong Nghia Hoang and Sara Magliacane and Douglas A. Lauffenburger },
+        journal={ bioRxiv },
+        year={ 2023 }, 
+        doi={ 10.1101/2023.06.08.544243 },  
+      }
