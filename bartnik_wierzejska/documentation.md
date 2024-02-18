@@ -1,36 +1,40 @@
 1. Neural Network Description
-For our work we used the Autoencoder neural network architecture. We implemented it in PyTorch. The autoencoder consists of an encoder and a decoder where the encoder compresses the input data into a latent-space representation, while the decoder reconstructs the original input from this representation.
+DeepLabV3Plus is a state-of-the-art, deep learning model for semantic image segmentation, where the goal is to assign semantic labels (e.g., car, dog, cat) to every pixel in the input image. It's an extension of the DeepLabV3 model and was introduced to improve segmentation performance by employing an encoder-decoder structure.
 
-1.1. Encoder
+![DeepLabV3Plus Structure](images/architecture.png "DeepLabV3Plus Structure")
 
-The encoder takes an input image and processes it through a series of convolutional layers. These layers extract features from the input image. Each convolutional layer is followed by a rectified linear unit (ReLU) activation function, which introduces non-linearity. Batch normalization is applied after each ReLU activation, helping in faster convergence during training and improving the generalization of the model. Max-pooling layers are used to downsample the feature maps, reducing their spatial dimensions and capturing important information. The final output of the encoder is a compressed representation (latent space) of the input image.
+The main components of DeepLabV3Plus are:
 
+Encoder (DeepLabV3): The encoder extracts the features from the input image. It uses an atrous convolution (also known as dilated convolution) to explicitly control the resolution at which feature responses are computed within Deep Convolutional Neural Networks. It also includes atrous spatial pyramid pooling (ASPP) to robustly segment objects at multiple scales.
 
-1.2. Decoder
+Decoder: The decoder refines the segmentation results along object boundaries. It uses a simple yet effective decoder module to recover the object boundaries that are lost during downsampling.
 
-The decoder takes the compressed representation produced by the encoder and reconstructs the original input image. It uses transposed convolutional layers (also known as deconvolution or fractionally strided convolution) to upsample the feature maps back to the original input dimensions. Similar to the encoder, each transposed convolutional layer is followed by a ReLU activation function and batch normalization. The final output of the decoder is the reconstructed image.
+Backbone: The backbone is the pre-trained model used for feature extraction. In our case ResNet50 is used as the backbone.
 
-![Autoencoder Neural Network Architecutre](images/AE.png "Autoencoder Neural Network Architecutre")
+In our project the DeepLabV3Plus model is used for image recovery. The model is trained to map phase images to grayscale images. The model is trained using the Mean Squared Error (MSE) loss and the Adam optimizer. The trained model is then used to reconstruct images from the test dataset.
 
 2. Results
 
-We trained our model for 50 epochs on a training dataset consisting of 4500 images and was tested on 500 images. We experimented with 4 values of learning rates: 0.01, 0.001, 0.0001, 0.00001. The best results were obtained for 0.01 learning rate value where the MSE value was equal to 4133. The outputs are not satisfactory because the images are not properly recovered from their spectra.
+The model was trained using 4500 images and tested on the remaining 500 images. We have used 10 epochs, 16 as the batch size and 0.001 learning rate. Because the GPU that was used is already 7 years old, the training took almost an hour. For that reason our tests were limited. For one of our test we received the average loss (MSE) of value 0.06587159831542522, but we couldn't replicate this result again. The next best result was 0.3688501351280138. 
 
-| LR    | 0.01 | 0.001 | 0.0001 | 0.00001 |
-|-------|-----|--------|--------|---------|
-| MSE   | 4081| 8989   | 19095  | 35415   |
+It can be said that even though the recovered outputs differ from one another, they are not satisfactory because the images are not properly recovered from their spectra.
 
 
-![Example 1](images/example0.png "Results 1")
 
-![Example 2](images/example200.png "Results 2")
+![Example 1](images/1.png "Results 1")
 
-![Loss graph for LR 0.01](images/plot0.01.png "Loss graph for LR 0.01")
+![Example 2](images/2.png "Results 2")
 
-@Posted Content{ Posted Content,
-        title={ Autoencoder Model for Translating Omics Signatures },
-        authors={ Nikolaos Meimetis and Krista M. Pullen and Daniel Y. Zhu and Avlant Nilsson and Trong Nghia Hoang and Sara Magliacane and Douglas A. Lauffenburger },
-        journal={ bioRxiv },
-        year={ 2023 }, 
-        doi={ 10.1101/2023.06.08.544243 },  
-      }
+![Example 3](images/3.png "Results 3")
+
+![Example 4](images/4.png "Results 4")
+
+
+@INPROCEEDINGS{9927609,
+  title={Improved DeepLabV3+ image Semantic Segmentation Algorithm}, 
+  author={Song, Yuzhe and Zheng, Guanghai and Zhang, Xin},
+  booktitle={2022 IEEE 5th International Conference on Information Systems and Computer Aided Education (ICISCAE)}, 
+  year={2022},
+  pages={771-778},
+  keywords={Technological innovation;Convolution;Computational modeling;Semantics;Data models;Decoding;Complexity theory;image semantic segmentation;DeepLabV3+ network model;ASPP;Channel attention;focal loss},
+  doi={10.1109/ICISCAE55891.2022.9927609}}
