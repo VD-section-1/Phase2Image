@@ -15,8 +15,9 @@ In our project the DeepLabV3Plus model is used for image recovery. The model is 
 
 2. Results
 
-The model was trained using 4500 images and tested on the remaining 500 images. We have performed 3 main tests. In the first two, we have used 10 epochs, 16 as the batch size and 0.001 learning rate. Because the GPU that was used is already 7 years old, the training took almost an hour. For that reason our tests were limited. One result of the average loss (MSE) was equal 0.06587159831542522. The second result of the next test was equal 0.3688501351280138 (MSE value).
+The model was trained using 4500 images and tested on the remaining 500 images. We have performed 3 main tests. In the first two, we have used 10 epochs, 16 as the batch size and 0.001 learning rate. Because the GPU that was used is already 7 years old, the training took almost an hour. For that reason our tests were limited. One result of the average loss was equal 0.06587159831542522. The second result of the next test was equal 0.3688501351280138.
 For the third test, we have changed the parameter values a bit - we have used 20 epochs, 16 as the batch size and 0.005 learning rate. The resulting average loss was the lowest from all three tests - equal to 0.05864615342579782.
+The additional metric MSE was calculated to compare results from other groups and was equal to 17578.58644104004.
 
 It can be said that even though the recovered outputs differ from one another, they are not satisfactory because the images are not properly recovered from their spectra.
 
