@@ -8,6 +8,7 @@ __pycache__/
 
 # Data files
 *.jpg
+*.pkl
 
 # Distribution / packaging
 .Python
