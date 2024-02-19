@@ -15,11 +15,12 @@ In a previous iteration of training, a slightly different model configuration wa
 | 18389.71      | 0.183497    | 0.0849   |
 
 Results of the chosen model:
-![result 1](bocian_likesu/results/result_norm_15epochs.png)
+![result 1](results/result_norm_15epochs.png)
 Results of the same model configuration with 5 epochs training:
-![result 2](bocian_likesu/results/result__norm_5epochs.png)
+![result 2](results/result__norm_5epochs.png)
 Results of the second mentioned model configuration, without normalization:
-![result 3](bocian_likesu/results/result_wo_norm.png)
+![result 3](results/result_wo_norm.png)
+
 
 
 We can conclude that the chosen model, despite not giving truly satisfactory results, is better than than the one without normalization and the one with only 5 epochs training.
