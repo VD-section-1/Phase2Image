@@ -28,6 +28,6 @@ We can conclude that the chosen model, despite not giving truly satisfactory res
 @inproceedings{ronneberger2015u,
   title={U-net: Convolutional networks for biomedical image segmentation},
   author={Ronneberger, Olaf and Fischer, Philipp and Brox, Thomas},
-  booktitle={Medical Image Computing and Computer-Assisted Intervention--MICCAI 2015: 18th International Conference, Munich, Germany, October 5-9, 2015, Proceedings, Part III 18},
+  booktitle={Medical Image Computing and Computer-Assisted Intervention--MICCAI 2015: 18th International Conference, Munich, Germany, October 5-9, 2015, Proceedings, Part III 18}, 
 
 
